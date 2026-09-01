@@ -11,16 +11,19 @@ import PillButton from "../ui/PillButton";
 export default function FeaturedProjects() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // Five client projects
-  const featured = projects.slice(0, 5);
+  // Featured client projects
+  const featured = projects.slice(0, 8);
 
-  // Asymmetric column span mapping for 12-column grid with 5 cards
+  // Asymmetric column span mapping for 12-column grid
   const colSpans = [
     "md:col-span-7", // Card 1: VBOTT
     "md:col-span-5", // Card 2: Startup Vapi
     "md:col-span-5", // Card 3: Bassam Shipping
     "md:col-span-7", // Card 4: HUA Sports India
-    "md:col-span-12", // Card 5: Skycraft LED
+    "md:col-span-6", // Card 5: Skycraft LED
+    "md:col-span-6", // Card 6: Sea Rock Inn
+    "md:col-span-7", // Card 7: HelperBuddy
+    "md:col-span-5", // Card 8: Sakika Kumar
   ];
 
   return (
@@ -63,9 +66,7 @@ export default function FeaturedProjects() {
               >
                 {/* Image/Video Container */}
                 <div
-                  className={`relative w-full ${
-                    idx === 4 ? "aspect-[21/9]" : "aspect-[4/3]"
-                  } rounded-xl overflow-hidden bg-raised border border-hairline transition-all duration-700 ease-custom-ease ${
+                  className={`relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-raised border border-hairline transition-all duration-700 ease-custom-ease ${
                     isAnyCardHovered && !isSelfHovered
                       ? "opacity-60 blur-[1px]"
                       : "opacity-100"
