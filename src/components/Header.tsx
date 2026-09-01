@@ -40,19 +40,17 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-custom-ease py-6 ${
-          isScrolled ? "bg-transparent" : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-custom-ease py-6 ${isScrolled ? "bg-transparent" : "bg-transparent"
+          }`}
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between relative min-h-[50px]">
-          
+
           {/* Logo Section (Fades and slides out on scroll) */}
           <div
-            className={`transition-all duration-500 ease-custom-ease transform ${
-              isScrolled
+            className={`transition-all duration-500 ease-custom-ease transform ${isScrolled
                 ? "md:opacity-0 md:-translate-x-10 md:pointer-events-none"
                 : "opacity-100 translate-x-0"
-            }`}
+              }`}
           >
             <Link
               href="/"
@@ -69,11 +67,10 @@ export default function Header() {
           {/* Center Navigation Pill (Dead-centered and transitions to White Pill on scroll) */}
           <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
             <nav
-              className={`transition-all duration-500 ease-custom-ease rounded-full px-8 py-3.5 border ${
-                isScrolled
+              className={`transition-all duration-500 ease-custom-ease rounded-full px-8 py-3.5 border ${isScrolled
                   ? "bg-black text-white shadow-[0_12px_40px_rgba(0,0,0,0.25)] border-white/10"
                   : "bg-transparent text-primary border-transparent"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-8">
                 {navLinks.map((link) => {
@@ -84,15 +81,14 @@ export default function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`text-sm font-semibold tracking-tight transition-colors duration-200 focus:outline-none ${
-                        isScrolled
+                      className={`text-sm font-semibold tracking-tight transition-colors duration-200 focus:outline-none ${isScrolled
                           ? isActive
                             ? "text-white"
                             : "text-neutral-400 hover:text-white"
                           : isActive
-                          ? "text-primary"
-                          : "text-neutral-600 hover:text-primary"
-                      }`}
+                            ? "text-primary"
+                            : "text-neutral-600 hover:text-primary"
+                        }`}
                     >
                       {link.label}
                     </Link>
@@ -106,11 +102,10 @@ export default function Header() {
           <div className="flex items-center gap-4">
             {/* Start a Project Pill (Fades and slides out on scroll) */}
             <div
-              className={`hidden md:block transition-all duration-500 ease-custom-ease transform ${
-                isScrolled
+              className={`hidden md:block transition-all duration-500 ease-custom-ease transform ${isScrolled
                   ? "md:opacity-0 md:translate-x-10 md:pointer-events-none"
                   : "opacity-100 translate-x-0"
-              }`}
+                }`}
             >
               <Link
                 href="/start"
@@ -156,9 +151,8 @@ export default function Header() {
                 >
                   <Link
                     href={link.href}
-                    className={`font-display text-4xl font-semibold tracking-tighter uppercase focus:outline-none ${
-                      pathname === link.href ? "text-accent" : "text-primary"
-                    }`}
+                    className={`font-display text-4xl font-semibold tracking-tighter uppercase focus:outline-none ${pathname === link.href ? "text-accent" : "text-primary"
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -189,8 +183,8 @@ export default function Header() {
             >
               <div>
                 <p>REACH OUT</p>
-                <a href="mailto:hello@unitech.dev" className="text-primary hover:text-accent mt-1 block">
-                  hello@unitech.dev
+                <a href="mailto:uniitechstudio@gmail.com" className="text-primary hover:text-accent mt-1 block">
+                  uniitechstudio@gmail.com
                 </a>
               </div>
               <div className="flex gap-4">

@@ -125,16 +125,16 @@ export default function Footer() {
                 uniitechstudio@gmail.com
               </a>
               <a href="tel:+919601846689" className="block hover:text-primary font-mono transition-colors">
-                +91 9601846689
+                +919601846689
               </a>
-              <a
+              {/* <a
                 href="https://wa.me/+919601846689"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-[#25D366] hover:underline font-medium transition-colors"
               >
                 WhatsApp Chat →
-              </a>
+              </a> */}
               <address className="not-italic leading-relaxed text-xs">
                 Udwada, Gujarat, <br />
                 India
