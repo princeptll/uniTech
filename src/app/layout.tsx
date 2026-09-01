@@ -26,6 +26,14 @@ export const metadata: Metadata = {
   description: "UniTech engineers custom software, web platforms, and mobile apps for growing businesses. High-craft development with senior developers.",
   metadataBase: new URL("https://unitech.dev"),
   keywords: ["Software Development", "Custom Software", "Next.js Development", "Mobile Apps", "Cloud Infrastructure", "DevOps", "Fintech", "Healthcare"],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   robots: {
     index: true,
     follow: true,
