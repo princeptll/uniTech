@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Link from "next/link";
-import { Check, CheckCircle2, Mail, Phone, MapPin } from "lucide-react";
+import { Check, CheckCircle2, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import confetti from "canvas-confetti";
 import ScrollReveal, { RevealItem } from "../ui/ScrollReveal";
 
@@ -48,18 +48,29 @@ export default function ContactSection() {
   const captchaValue = watch("captcha");
 
   const onSubmit = async (data: ContactFormValues) => {
-    // Simulate API request delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    // Trigger premium confetti celebration (cyan/blue tones)
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ["#000000", "#71717A", "#E4E4E7"],
-    });
+    try {
+      await fetch("https://formspree.io/f/mvzdyzqd", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    setIsSubmitted(true);
+      // Trigger premium confetti celebration
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#000000", "#71717A", "#E4E4E7"],
+      });
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      setIsSubmitted(true);
+    }
   };
 
   const projectTypes = [
@@ -72,10 +83,10 @@ export default function ContactSection() {
   ];
 
   const budgetRanges = [
-    "£10k – £25k",
-    "£25k – £50k",
-    "£50k – £100k",
-    "£100k+",
+    "₹50k – ₹2L",
+    "₹2L – ₹5L",
+    "₹5L – ₹10L",
+    "₹10L+",
   ];
 
   return (
@@ -99,47 +110,65 @@ export default function ContactSection() {
               </RevealItem>
               <RevealItem>
                 <p className="text-lg md:text-xl leading-relaxed text-muted max-w-[35ch]">
-                  <strong className="text-primary font-semibold">Have a serious engineering budget?</strong> Let's partner to construct scalable custom software that delivers results.
+                  <strong className="text-primary font-semibold">Ready to elevate your digital presence?</strong> Get in touch with us today for a free consultation.
                 </p>
               </RevealItem>
             </ScrollReveal>
 
-            {/* Office Coordinates */}
+            {/* Office Coordinates & Contact Details */}
             <ScrollReveal className="space-y-6 pt-8 border-t border-hairline">
               <RevealItem className="flex items-start gap-4">
-                <MapPin className="text-accent shrink-0 mt-1" size={20} />
+                <div className="p-2.5 rounded-lg bg-raised border border-hairline text-accent shrink-0">
+                  <MapPin size={20} />
+                </div>
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-primary mb-1">
-                    London Office
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-muted mb-1">
+                    Office Location
                   </h4>
-                  <address className="not-italic text-sm text-muted leading-relaxed">
-                    12 Gutter Lane, EC2V 8AS, London, UK
+                  <address className="not-italic text-sm text-primary font-medium leading-relaxed">
+                    Udwada, Gujarat, India
                   </address>
                 </div>
               </RevealItem>
 
               <RevealItem className="flex items-start gap-4">
-                <Mail className="text-accent shrink-0 mt-1" size={20} />
+                <div className="p-2.5 rounded-lg bg-raised border border-hairline text-accent shrink-0">
+                  <Mail size={20} />
+                </div>
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-primary mb-1">
-                    General Inquiries
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-muted mb-1">
+                    Email Us
                   </h4>
-                  <a href="mailto:hello@unitech.dev" className="text-sm text-muted hover:text-primary transition-colors">
-                    hello@unitech.dev
+                  <a href="mailto:uniitechstudio@gmail.com" className="text-sm font-medium text-primary hover:text-accent transition-colors">
+                    uniitechstudio@gmail.com
                   </a>
                 </div>
               </RevealItem>
 
               <RevealItem className="flex items-start gap-4">
-                <Phone className="text-accent shrink-0 mt-1" size={20} />
+                <div className="p-2.5 rounded-lg bg-raised border border-hairline text-accent shrink-0">
+                  <Phone size={20} />
+                </div>
                 <div>
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-primary mb-1">
-                    Direct Call
+                  <h4 className="text-xs font-mono uppercase tracking-widest text-muted mb-1">
+                    Phone / Call
                   </h4>
-                  <a href="tel:+442074829110" className="text-sm text-muted hover:text-primary transition-colors">
-                    +44 (0) 20 7482 9110
+                  <a href="tel:+919601846689" className="text-sm font-medium text-primary hover:text-accent transition-colors">
+                    +91 9601846689
                   </a>
                 </div>
+              </RevealItem>
+
+              <RevealItem className="pt-2">
+                <a
+                  href="https://wa.me/+919601846689"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/30 hover:bg-[#25D366] hover:text-white font-semibold text-sm rounded-full px-6 py-3.5 transition-all duration-300 shadow-sm"
+                >
+                  <MessageCircle size={20} />
+                  <span>Chat on WhatsApp</span>
+                </a>
               </RevealItem>
             </ScrollReveal>
 

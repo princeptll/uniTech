@@ -75,18 +75,29 @@ export default function FormPage() {
   };
 
   const onSubmit = async (data: BriefValues) => {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    // Confetti!
-    confetti({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ["#000000", "#71717A", "#E4E4E7"],
-    });
+    try {
+      await fetch("https://formspree.io/f/mvzdyzqd", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    setIsSubmitted(true);
+      // Confetti!
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: ["#000000", "#71717A", "#E4E4E7"],
+      });
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Submission error:", error);
+      setIsSubmitted(true);
+    }
   };
 
   return (

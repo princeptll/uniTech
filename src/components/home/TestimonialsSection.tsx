@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, ExternalLink } from "lucide-react";
 import { testimonials } from "../../data/testimonials";
 import ScrollReveal, { RevealItem } from "../ui/ScrollReveal";
 
@@ -38,17 +38,12 @@ export default function TestimonialsSection() {
     };
   }, []);
 
-  const avatars = [
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop"
-  ];
+  const avatars = testimonials.slice(0, 4).map((t) => t.avatar);
 
   return (
     <section className="bg-background py-24 md:py-32 border-b border-hairline overflow-hidden" id="testimonials">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20">
-        
+
         {/* Header */}
         <ScrollReveal className="space-y-6 mb-20">
           <RevealItem>
@@ -58,12 +53,12 @@ export default function TestimonialsSection() {
           </RevealItem>
           <RevealItem>
             <h2 className="font-display text-4xl md:text-6xl font-medium tracking-tight leading-none text-primary">
-              Client Reviews
+              Client Reviews & Stories
             </h2>
           </RevealItem>
           <RevealItem>
-            <p className="text-muted text-base max-w-[40ch]">
-              We help growing businesses build serious software. Here is what our clients say.
+            <p className="text-muted text-base max-w-[45ch]">
+              Here is what founders, directors, and tech leads say about engineering their products with UniTech.
             </p>
           </RevealItem>
         </ScrollReveal>
@@ -78,7 +73,7 @@ export default function TestimonialsSection() {
               msOverflowStyle: "none",
             }}
           >
-            
+
             {/* Card A (Review Aggregate) */}
             <div className="min-w-[280px] sm:min-w-[360px] md:min-w-[400px] snap-start shrink-0 rounded-xl bg-raised border border-hairline p-8 flex flex-col justify-between">
               <div>
@@ -89,7 +84,7 @@ export default function TestimonialsSection() {
                   ))}
                 </div>
                 <h3 className="font-display text-xl md:text-2xl font-medium leading-snug text-primary">
-                  Over 40+ growing businesses trust UniTech for custom software & web engineering.
+                  Over 40+ founders and businesses trust UniTech for custom software & web engineering.
                 </h3>
               </div>
 
@@ -113,7 +108,7 @@ export default function TestimonialsSection() {
                     40+
                   </div>
                 </div>
-                
+
                 <Link
                   href="/testimonials"
                   className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-accent hover:text-primary transition-colors duration-300"
@@ -130,12 +125,27 @@ export default function TestimonialsSection() {
                 className="min-w-[280px] sm:min-w-[380px] md:min-w-[480px] snap-start shrink-0 rounded-xl bg-raised border border-hairline p-8 flex flex-col justify-between"
               >
                 {/* Quote Text */}
-                <blockquote className="font-display text-lg md:text-xl font-normal leading-relaxed text-muted before:content-['“'] after:content-['”']">
-                  {t.quote}
-                </blockquote>
+                <div>
+                  {t.projectUrl && (
+                    <div className="mb-4">
+                      <a
+                        href={t.projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded-full hover:bg-accent hover:text-white transition-all duration-200"
+                      >
+                        <span>{t.company} Live Site</span>
+                        <ExternalLink size={12} />
+                      </a>
+                    </div>
+                  )}
+                  <blockquote className="font-display text-base md:text-lg font-normal leading-relaxed text-muted before:content-['“'] after:content-['”']">
+                    {t.quote}
+                  </blockquote>
+                </div>
 
                 {/* Profile Meta */}
-                <div className="flex items-center gap-4 mt-12 border-t border-hairline/50 pt-6">
+                <div className="flex items-center gap-4 mt-8 border-t border-hairline/50 pt-6">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 border border-hairline bg-background">
                     <Image
                       src={t.avatar}
@@ -150,7 +160,7 @@ export default function TestimonialsSection() {
                       {t.name}
                     </cite>
                     <span className="text-xs font-mono text-muted uppercase tracking-wider block mt-1">
-                      {t.role}, {t.company}
+                      {t.role}, <strong className="text-primary font-semibold">{t.company}</strong>
                     </span>
                   </div>
                 </div>

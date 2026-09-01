@@ -17,7 +17,7 @@ export default function Footer() {
 
   const companyLinks = [
     { label: "About Us", href: "/about" },
-    { label: "Careers", href: "/careers" },
+    // { label: "Careers", href: "/careers" },
     { label: "Selected Work", href: "/work" },
     { label: "Contact Us", href: "/contact" },
   ];
@@ -38,10 +38,10 @@ export default function Footer() {
       <div className="absolute bottom-0 inset-x-0 h-[200px] bg-gradient-to-t from-accent/5 to-transparent pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 relative z-10">
-        
+
         {/* Top footer columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-12 md:gap-8 pb-16">
-          
+
           {/* Big CTA Area */}
           <div className="md:col-span-4 flex flex-col justify-between">
             <div>
@@ -121,15 +121,23 @@ export default function Footer() {
               Contact
             </h4>
             <div className="space-y-4 text-sm text-muted">
-              <a href="mailto:hello@unitech.dev" className="block hover:text-primary transition-colors">
-                hello@unitech.dev
+              <a href="mailto:uniitechstudio@gmail.com" className="block hover:text-primary transition-colors">
+                uniitechstudio@gmail.com
               </a>
-              <a href="tel:+442074829110" className="block hover:text-primary transition-colors">
-                +44 (0) 20 7482 9110
+              <a href="tel:+919601846689" className="block hover:text-primary font-mono transition-colors">
+                +91 9601846689
               </a>
-              <address className="not-italic leading-relaxed">
-                12 Gutter Lane, <br />
-                EC2V 8AS, London, UK
+              <a
+                href="https://wa.me/+919601846689"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-[#25D366] hover:underline font-medium transition-colors"
+              >
+                WhatsApp Chat →
+              </a>
+              <address className="not-italic leading-relaxed text-xs">
+                Udwada, Gujarat, <br />
+                India
               </address>
             </div>
           </div>
